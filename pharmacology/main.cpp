@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <iostream>
 #include <sstream>
@@ -33,7 +33,9 @@ private:
         case SideEffect::NODDING: return "Nodding";
         case SideEffect::HYPERTHERMIA: return "Hyperthermia";
         case SideEffect::DEATH_RISK: return "Risk of Death";
-        case SideEffect::SEROTONIN_SYNDROME: return "Serotonin Syndrome";
+        case SideEffect::NAUSEA: return "Nausea";
+        case SideEffect::HALLUCINATIONS: return "Hallucinations";
+        case SideEffect::MANIA: return "Mania or hypomania";
         default: return "Unknown Effect";
         }
     }
@@ -97,10 +99,10 @@ private:
         }
 
         // Sort by severity
-        std::sort(effects.begin(), effects.end(),
-            [](const InteractionEffect& a, const InteractionEffect& b) {
-                return a.severity > b.severity;
-            });
+        std::ranges::sort(effects,
+                          [](const InteractionEffect& a, const InteractionEffect& b) {
+                              return a.severity > b.severity;
+                          });
 
         bool hasLethalRisk = false;
         bool hasMajorRisk = false;
@@ -109,7 +111,6 @@ private:
             if (effect.severity == InteractionSeverity::LETHAL) hasLethalRisk = true;
             if (effect.severity == InteractionSeverity::MAJOR) hasMajorRisk = true;
 
-            std::cout << "" << effectToString(effect.effect) << "\n";
             std::cout << "   Severity: " << severityToString(effect.severity) << "\n";
             std::cout << "   Probability: " << (effect.probability * 100) << "%\n";
             std::cout << "   Description: " << effect.description << "\n\n";
@@ -118,15 +119,15 @@ private:
         // Risk assessment summary
         std::cout << "=== RISK ASSESSMENT ===\n";
         if (hasLethalRisk) {
-            std::cout << "EXTREME DANGER: This combination has LETHAL potential.\n";
+            std::cout << "   EXTREME DANGER: This combination has LETHAL potential.\n";
             std::cout << "   Immediate medical supervision required.\n";
         }
         else if (hasMajorRisk) {
-            std::cout << "  HIGH RISK: This combination poses significant health risks.\n";
+            std::cout << "   HIGH RISK: This combination poses significant health risks.\n";
             std::cout << "   Medical consultation strongly recommended.\n";
         }
         else {
-            std::cout << "MODERATE RISK: Monitor for side effects.\n";
+            std::cout << "   MODERATE RISK: Monitor for side effects.\n";
         }
     }
 };
