@@ -109,7 +109,7 @@ private:
             if (effect.severity == InteractionSeverity::LETHAL) hasLethalRisk = true;
             if (effect.severity == InteractionSeverity::MAJOR) hasMajorRisk = true;
 
-            std::cout << "⚠️  " << effectToString(effect.effect) << "\n";
+            std::cout << "" << effectToString(effect.effect) << "\n";
             std::cout << "   Severity: " << severityToString(effect.severity) << "\n";
             std::cout << "   Probability: " << (effect.probability * 100) << "%\n";
             std::cout << "   Description: " << effect.description << "\n\n";
@@ -118,15 +118,15 @@ private:
         // Risk assessment summary
         std::cout << "=== RISK ASSESSMENT ===\n";
         if (hasLethalRisk) {
-            std::cout << "🚨 EXTREME DANGER: This combination has LETHAL potential.\n";
+            std::cout << "EXTREME DANGER: This combination has LETHAL potential.\n";
             std::cout << "   Immediate medical supervision required.\n";
         }
         else if (hasMajorRisk) {
-            std::cout << "⚠️  HIGH RISK: This combination poses significant health risks.\n";
+            std::cout << "  HIGH RISK: This combination poses significant health risks.\n";
             std::cout << "   Medical consultation strongly recommended.\n";
         }
         else {
-            std::cout << "ℹ️  MODERATE RISK: Monitor for side effects.\n";
+            std::cout << "MODERATE RISK: Monitor for side effects.\n";
         }
     }
 };
