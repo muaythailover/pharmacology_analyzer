@@ -27,6 +27,9 @@
     <ClInclude Include="db.h">
       <Filter>File di origine</Filter>
     </ClInclude>
+    <ClInclude Include="od_db.h">
+      <Filter>File di origine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

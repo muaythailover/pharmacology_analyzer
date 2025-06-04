@@ -132,6 +132,7 @@
     <ClInclude Include="db.h" />
     <ClInclude Include="drug.h" />
     <ClInclude Include="interaction_engine.h" />
+    <ClInclude Include="od_db.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
