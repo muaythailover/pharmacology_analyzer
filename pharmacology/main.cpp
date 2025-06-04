@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <iostream>
 #include <sstream>
@@ -193,10 +193,10 @@ private:
         }
 
         // Sort by severity
-        std::sort(effects.begin(), effects.end(),
-            [](const InteractionEffect& a, const InteractionEffect& b) {
-                return a.severity > b.severity;
-            });
+        std::ranges::sort(effects,
+                          [](const InteractionEffect& a, const InteractionEffect& b) {
+                              return a.severity > b.severity;
+                          });
 
         bool hasLethalRisk = false;
         bool hasMajorRisk = false;
