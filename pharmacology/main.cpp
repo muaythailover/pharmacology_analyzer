@@ -356,5 +356,6 @@ private:
 int main() {
     PharmacologyProgram program;
     program.run();
+    std::cin.get();
     return 0;
 }
